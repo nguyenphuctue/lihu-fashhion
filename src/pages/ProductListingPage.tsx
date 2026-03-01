@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
+import { formatCurrency } from '../utils/formatCurrency';
 
 export default function ProductListingPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -13,7 +14,7 @@ export default function ProductListingPage() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>(
     initialCategory ? [initialCategory] : []
   );
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000000]);
   const [sortOption, setSortOption] = useState('newest');
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
@@ -83,7 +84,7 @@ export default function ProductListingPage() {
           
           <div className="flex items-center mt-4 md:mt-0 space-x-4">
             <button 
-              className="md:hidden flex items-center text-gray-700 hover:text-black"
+              className="md:hidden flex items-center text-gray-700 hover:text-black cursor-pointer"
               onClick={() => setIsMobileFilterOpen(true)}
             >
               <Filter size={20} className="mr-2" />
@@ -91,7 +92,7 @@ export default function ProductListingPage() {
             </button>
             
             <div className="relative group">
-              <button className="flex items-center text-sm font-medium text-gray-700 hover:text-black">
+              <button className="flex items-center text-sm font-medium text-gray-700 hover:text-black cursor-pointer">
                 Sắp xếp: <span className="ml-1 text-gray-900 font-semibold">
                   {sortOption === 'newest' && 'Mới Nhất'}
                   {sortOption === 'price-asc' && 'Giá: Thấp đến Cao'}
@@ -102,19 +103,19 @@ export default function ProductListingPage() {
               <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-md overflow-hidden hidden group-hover:block z-10 border border-gray-100">
                 <button 
                   onClick={() => setSortOption('newest')}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer"
                 >
                   Mới Nhất
                 </button>
                 <button 
                   onClick={() => setSortOption('price-asc')}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer"
                 >
                   Giá: Thấp đến Cao
                 </button>
                 <button 
                   onClick={() => setSortOption('price-desc')}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer"
                 >
                   Giá: Cao đến Thấp
                 </button>
@@ -151,14 +152,14 @@ export default function ProductListingPage() {
               <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Khoảng Giá</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between text-sm text-gray-600">
-                  <span>${priceRange[0]}</span>
-                  <span>${priceRange[1]}</span>
+                  <span>{formatCurrency(priceRange[0])}</span>
+                  <span>{formatCurrency(priceRange[1])}</span>
                 </div>
                 <input
                   type="range"
                   min="0"
-                  max="1000"
-                  step="10"
+                  max="10000000"
+                  step="100000"
                   value={priceRange[1]}
                   onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                   className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-black"
@@ -175,7 +176,7 @@ export default function ProductListingPage() {
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-lg font-bold text-gray-900">Bộ Lọc</h2>
                   <button onClick={() => setIsMobileFilterOpen(false)}>
-                    <X size={24} className="text-gray-500" />
+                    <X size={24} className="text-gray-500 cursor-pointer" />
                   </button>
                 </div>
                 
@@ -204,14 +205,14 @@ export default function ProductListingPage() {
                   <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Khoảng Giá</h3>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between text-sm text-gray-600">
-                      <span>${priceRange[0]}</span>
-                      <span>${priceRange[1]}</span>
+                      <span>{formatCurrency(priceRange[0])}</span>
+                      <span>{formatCurrency(priceRange[1])}</span>
                     </div>
                     <input
                       type="range"
                       min="0"
-                      max="1000"
-                      step="10"
+                      max="10000000"
+                      step="100000"
                       value={priceRange[1]}
                       onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                       className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-black"
@@ -223,15 +224,15 @@ export default function ProductListingPage() {
                   <button 
                     onClick={() => {
                       setSelectedCategories([]);
-                      setPriceRange([0, 1000]);
+                      setPriceRange([0, 10000000]);
                     }}
-                    className="w-full py-3 border border-gray-300 text-black font-medium rounded-md mb-3"
+                    className="w-full py-3 border border-gray-300 text-black font-medium rounded-md mb-3 cursor-pointer"
                   >
                     Xóa Bộ Lọc
                   </button>
                   <button 
                     onClick={() => setIsMobileFilterOpen(false)}
-                    className="w-full py-3 bg-black text-white font-medium rounded-md"
+                    className="w-full py-3 bg-black text-white font-medium rounded-md cursor-pointer"
                   >
                     Xem {filteredProducts.length} Sản Phẩm
                   </button>
@@ -254,9 +255,9 @@ export default function ProductListingPage() {
                 <button 
                   onClick={() => {
                     setSelectedCategories([]);
-                    setPriceRange([0, 1000]);
+                    setPriceRange([0, 10000000]);
                   }}
-                  className="mt-4 text-black underline hover:text-gray-600"
+                  className="mt-4 text-black underline hover:text-gray-600 cursor-pointer"
                 >
                   Xóa bộ lọc
                 </button>

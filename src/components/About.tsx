@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
@@ -15,7 +16,7 @@ export default function About() {
           >
             <img
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop"
-              alt="LiHu Brand Story"
+              alt="HuLi Brand Story"
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -33,18 +34,18 @@ export default function About() {
               <span className="italic text-gray-500">Nàng Thơ Hiện Đại</span>
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              LiHu không chỉ là một thương hiệu; đó là sự tôn vinh cá tính riêng biệt. Được sinh ra từ niềm đam mê với vẻ đẹp thanh lịch vượt thời gian và thiết kế đương đại, chúng tôi tạo ra những trang phục giúp phái đẹp tự tin thể hiện phong cách riêng của mình.
+              HuLi không chỉ là một thương hiệu; đó là sự tôn vinh cá tính riêng biệt. Được sinh ra từ niềm đam mê với vẻ đẹp thanh lịch vượt thời gian và thiết kế đương đại, chúng tôi tạo ra những trang phục giúp phái đẹp tự tin thể hiện phong cách riêng của mình.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
               Mỗi sản phẩm đều được thiết kế tỉ mỉ với chất liệu cao cấp và sự chú trọng đến từng chi tiết, đảm bảo bạn không chỉ trông tuyệt vời mà còn cảm thấy đặc biệt.
             </p>
             <div className="pt-4">
-              <a
-                href="#"
+              <Link
+                to="/about"
                 className="inline-block border border-black px-8 py-3 text-sm font-medium uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300"
               >
                 Câu Chuyện Của Chúng Tôi
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

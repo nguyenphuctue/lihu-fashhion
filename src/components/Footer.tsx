@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-serif font-bold tracking-widest uppercase">LiHu</h3>
+            <h3 className="text-2xl font-serif font-bold tracking-widest uppercase">HuLi</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               Định nghĩa lại sự thanh lịch cho người phụ nữ hiện đại. Những thiết kế vượt thời gian được tạo ra bằng đam mê và sự chính xác.
             </p>
@@ -73,7 +73,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-16 pt-8 text-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} LiHu Fashion. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} HuLi Fashion. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -1,39 +1,10 @@
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
-import { Product } from '../types';
-
-const products: Product[] = [
-  {
-    id: 1,
-    name: 'Đầm Dạ Hội Lụa',
-    price: 299,
-    image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1908&auto=format&fit=crop',
-    category: 'Váy Đầm',
-  },
-  {
-    id: 2,
-    name: 'Áo Len Cashmere',
-    price: 189,
-    image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1964&auto=format&fit=crop',
-    category: 'Áo Kiểu',
-  },
-  {
-    id: 3,
-    name: 'Túi Tote Da',
-    price: 349,
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1935&auto=format&fit=crop',
-    category: 'Phụ Kiện',
-  },
-  {
-    id: 4,
-    name: 'Đầm Linen Mùa Hè',
-    price: 129,
-    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=1888&auto=format&fit=crop',
-    category: 'Váy Đầm',
-  },
-];
+import { products } from '../data/products';
 
 export default function ProductSection() {
+  const featuredProducts = products.slice(0, 4);
+
   return (
     <section id="new-arrivals" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +24,7 @@ export default function ProductSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product) => (
+          {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

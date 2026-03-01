@@ -23,7 +23,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight mb-4 drop-shadow-lg"
         >
-          Thời Trang LiHu
+          Thời Trang HuLi
         </motion.h1>
         
         <motion.p
